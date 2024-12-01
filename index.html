@@ -1,108 +1,138 @@
 <!DOCTYPE html>
-<html  >
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="generator" content="Kata">
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-  <link rel="shortcut icon" href="assets/images/k-characters-character-alphabet-letter-36028-128x128.png" type="image/x-icon">
-  <meta name="description" content="Kata's Portfolio and Gateway">
-  
-  
-  <title>Kata</title>
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
-  <link rel="stylesheet" href="assets/socicon/css/styles.css">
-  <link rel="stylesheet" href="assets/theme/css/style.css">
-  <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
-  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
-
-  
-  
-  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kata</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <style>
+        body {
+            background: rgb(203,14,144);
+            background: linear-gradient(90deg, rgba(203,14,144,1) 0%, rgba(255,87,87,1) 100%);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Kanit', sans-serif;
+            text-align: center;
+            margin: 0;
+        }
+        @keyframes gradientBG {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 5px solid white;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .social-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .social-link:hover {
+            transform: scale(1.15);
+        }
+        .social-icon {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            overflow: hidden; /* Ensures the shadow matches the circular shape */
+            box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); /* Default no shadow */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .social-link:hover .social-icon {
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3); /* Rounded shadow for hover */
+        }
+        .social-icon svg {
+            width: 40px;
+            height: 40px;
+        }
+        .link-name {
+            margin-top: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+    </style>
 </head>
 <body>
-  
-  <section data-bs-version="5.1" class="image3 cid-tBYGv3Drhz" id="image3-q">
-    
+    <img src="images/stdkatalogo.png" alt="Profile" class="profile-image">
 
-    
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-4">
-                <div class="image-wrapper">
-                    <a href="about.html"><img src="assets/images/stdkatalogotran-1-1000x1000.png" alt="About Me"></a>
-                    
-                </div>
+    <br><br><br>
+    <div class="social-links">
+        <a href="https://twitter.com/a1_nice" class="social-link">
+            <div class="social-icon" style="background-color: #1DA1F2;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+                </svg>
             </div>
-        </div>
+            <div class="link-name">Twitter</div>
+        </a>
+        <a href="https://web.facebook.com/profile.php?id=100031029731992" class="social-link">
+            <div class="social-icon" style="background-color: #3B5998;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                </svg>
+            </div>
+            <div class="link-name">Facebook</div>
+        </a>
+        <a href="https://www.youtube.com/channel/UCCZW7GDBLRsWPRKqb1YlLgA/" class="social-link">
+            <div class="social-icon" style="background-color: #FF0000;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-youtube" viewBox="0 0 16 16">
+                    <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z"/>
+                </svg>
+            </div>
+            <div class="link-name">YouTube</div>
+        </a>
+        <a href="https://www.twitch.tv/tiskatta" class="social-link">
+            <div class="social-icon" style="background-color: #6441A5;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 2H3v16h5v4l4-4h5l4-4V2zm-10 9V7m5 4V7"/>
+                </svg>
+            </div>
+            <div class="link-name">Twitch</div>
+        </a>
+        <a href="https://www.pixiv.net/en/users/17350585" class="social-link">
+            <div class="social-icon" style="background-color: #0096FA;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm171.5 84c41 0 76.3 12.9 101.4 35.2l0 0c25.2 22.2 39.8 54.1 39.8 88.8c.1 35.3-16.6 66.3-42.4 87c-25.9 20.8-60.6 32.4-98.8 32.4c-43.5 0-83.8-16.1-83.8-16.1v51.8c7.4 2.2 19.7 7 11.9 14.8H104.8c-7.7-7.8 3.6-12.4 12.1-14.8V175.5C97.1 190.9 87 204.3 81.8 214.2c6 19.4-5.3 18.5-5.3 18.5L56 199.7s72.7-83.7 179.5-83.7zm-3.6 222.9c30 0 56-11.3 73.9-29.2c17.9-18.1 27.9-41.6 28-70.2c-.1-29.3-9.5-54.6-26.7-73.6c-17.2-18.9-42.7-31.3-75.2-31.4c-26.7-.1-59.8 9-80.2 23.7V323.1c18.6 9.3 46.8 15.9 80.2 15.8z"/></svg>
+            </div>
+            <div class="link-name">Pixiv</div>
+        </a>
+        <a href="https://myanimelist.net/animelist/KisekiKatan" class="social-link">
+            <div class="social-icon" style="background-color: #2E51A2;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M8.273 7.247v8.423l-2.103-.003v-5.216l-2.03 2.404l-1.989-2.458l-.02 5.285H.001L0 7.247h2.203l1.865 2.545l2.015-2.546l2.19.001zm8.628 2.069l.025 6.335h-2.365l-.008-2.871h-2.8c.07.499.21 1.266.417 1.779c.155.381.298.751.583 1.128l-1.705 1.125c-.349-.636-.622-1.337-.878-2.082a9.296 9.296 0 0 1-.507-2.179c-.085-.75-.097-1.471.107-2.212a3.908 3.908 0 0 1 1.161-1.866c.313-.293.749-.5 1.1-.687c.351-.187.743-.264 1.107-.359a7.405 7.405 0 0 1 1.191-.183c.398-.034 1.107-.066 2.39-.028l.545 1.749H14.51c-.593.008-.878.001-1.341.209a2.236 2.236 0 0 0-1.278 1.92l2.663.033l.038-1.81h2.309zm3.992-2.099v6.627l3.107.032l-.43 1.775h-4.807V7.187l2.13.03z"/>
+                  </svg>
+            </div>
+            <div class="link-name">MyAnimeList</div>
+        </a>
     </div>
-</section>
 
-<section data-bs-version="5.1" class="features13 cid-tBYI5DGwoq" id="features14-s">
-    
-
-    
-    <div class="container">
-        <div class="row">
-            
-            <div class="card col-12 col-md-4 col-lg-2 p-3">
-                <div class="card-wrapper">
-                    <div class="card-box align-center">
-                        <a href="https://twitter.com/a1_nice"><span class="mbr-iconfont socicon-twitter socicon"></span></a>
-                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7">
-                            <a href="https://twitter.com/a1_nice" class="text-primary">@a1_nice</a></h4>
-                    </div>
-                </div>
-            </div>
-            <div class="card p-3 col-12 col-md-4 col-lg-2">
-                <div class="card-wrapper">
-                    <div class="card-box align-center">
-                        <a href="https://web.facebook.com/profile.php?id=100031029731992"><span class="mbr-iconfont socicon-facebook socicon"></span></a>
-                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><a href="https://web.facebook.com/profile.php?id=100031029731992" class="text-primary">N'Nice Aphirak</a></h4>
-                    </div>
-                </div>
-            </div>
-            <div class="card p-3 col-12 col-md-4 col-lg-2">
-                <div class="card-wrapper">
-                    <div class="card-box align-center">
-                        <a href="https://myanimelist.net/animelist/KisekiKatan"><span class="mbr-iconfont socicon-myanimelist socicon"></span></a>
-                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7">
-                            <a href="https://myanimelist.net/animelist/KisekiKatan" class="text-primary">KisekiKatan</a></h4>
-                    </div>
-                </div>
-            </div>
-            <div class="card p-3 col-12 col-md-4 col-lg-2">
-                <div class="card-wrapper">
-                    <div class="card-box align-center">
-                        <a href="https://www.pixiv.net/en/users/17350585"><span class="mbr-iconfont socicon-pixiv socicon"></span></a>
-                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7">
-                            <a href="https://www.pixiv.net/en/users/17350585" class="text-primary">Katan</a></h4>
-                    </div>
-                </div>
-            </div>
-            <div class="card p-3 col-12 col-md-4 col-lg-2">
-                <div class="card-wrapper">
-                    <div class="card-box align-center">
-                        <a href="https://www.youtube.com/channel/UCCZW7GDBLRsWPRKqb1YlLgA/"><span class="mbr-iconfont socicon-youtube socicon"></span></a>
-                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7">
-                            <a href="https://www.youtube.com/channel/UCCZW7GDBLRsWPRKqb1YlLgA/" class="text-primary">Karita</a>
-                            </h4>
-                    </div>
-                </div>
-            </div>
-            <div class="card p-3 col-12 col-md-4 col-lg-2">
-                <div class="card-wrapper">
-                    <div class="card-box align-center">
-                        <a href="https://www.twitch.tv/tiskatta"><span class="mbr-iconfont socicon-twitch socicon"></span></a>
-                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><a href="https://www.twitch.tv/tiskatta" class="text-primary">TisKatta</a></h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
