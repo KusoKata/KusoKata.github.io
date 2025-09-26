@@ -1,138 +1,1839 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kata</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600&display=swap" rel="stylesheet">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-    <style>
-        body {
-            background: rgb(203,14,144);
-            background: linear-gradient(90deg, rgba(203,14,144,1) 0%, rgba(255,87,87,1) 100%);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            font-family: 'Kanit', sans-serif;
-            text-align: center;
-            margin: 0;
-        }
-        @keyframes gradientBG {
-            0% {background-position: 0% 50%;}
-            50% {background-position: 100% 50%;}
-            100% {background-position: 0% 50%;}
-        }
-        .profile-image {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 20px;
-            border: 5px solid white;
-        }
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        .social-link {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-decoration: none;
-            color: white;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .social-link:hover {
-            transform: scale(1.15);
-        }
-        .social-icon {
-            width: 80px;
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            overflow: hidden; /* Ensures the shadow matches the circular shape */
-            box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); /* Default no shadow */
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .social-link:hover .social-icon {
-            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3); /* Rounded shadow for hover */
-        }
-        .social-icon svg {
-            width: 40px;
-            height: 40px;
-        }
-        .link-name {
-            margin-top: 8px;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kata</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <style>
+    body {
+      font-family: 'Kanit', sans-serif;
+      background: linear-gradient(90deg, rgba(203,14,144,1) 0%, rgba(255,87,87,1) 100%);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .navbar { margin-top: 20px; }
+    .nav-link {
+      color: #fff !important;
+      font-weight: 600;
+      font-size: 1.2rem;
+      padding: 10px 20px !important;
+    }
+    #about {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  #about .about-img {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+  }
+  .software-icon {
+    width: 40px;
+    height: 40px;
+    margin: 8px;
+    vertical-align: middle;
+  }
+  .about-block {
+    text-align: left;
+    margin: 0 auto;
+    max-width: 700px;
+  }
+  .about-block h3 {
+    margin-bottom: 15px;
+    font-weight: 700;
+  }
+  .about-block ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  .about-block li {
+    margin-bottom: 20px;
+  }
+
+    .content-wrapper {
+      flex: 1;
+      display: flex;
+      justify-content: center; 
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .email-link {
+    color: white;              /* text color */
+    text-decoration: underline; /* underline the text */
+  }
+
+    .logo {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      margin: 0 auto 10px auto;
+      object-fit: cover;
+      display: block;
+    }
+
+    .logo-text {
+      font-size: 1rem;
+      font-weight: 400;
+      margin-bottom: 30px;
+    }
+
+    /* Image cards - 16:9 */
+    .image-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      cursor: pointer;
+      aspect-ratio: 16 / 9;
+      background: #000;
+    }
+    .image-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.4s ease;
+    }
+    .image-card .overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: all 0.4s ease;
+      color: #fff;
+      font-size: 1.3rem;
+      background: rgba(0, 0, 0, 0.4);
+    }
+    .image-card:hover img { filter: blur(4px); transform: scale(1.05); }
+    .image-card:hover .overlay { opacity: 1; }
+
+    /* Page transition */
+    .page-section {
+      display: none;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+    .page-section.active { display: block; opacity: 1; }
+
+    /* Social media icons */
+    .social-links { margin-top: 30px; }
+    .social-links a {
+      color: #fff;
+      font-size: 1.8rem;
+      margin: 0 12px;
+      transition: color 0.3s;
+    }
+    .social-links a:hover { color: #000; }
+
+    /* Special layout for short films */
+    #shortfilms {
+      max-width: 1100px;
+      text-align: left;
+    }
+
+    .footer {
+  text-align: center;
+  padding: 20px 0;
+  margin-top: auto; /* pushes footer to bottom */
+}
+
+.footer .social-links a {
+  color: #fff;
+  font-size: 1.8rem;
+  margin: 0 12px;
+  transition: color 0.3s;
+}
+
+.footer .social-links a:hover {
+  color: #000;
+}
+.software-icon {
+    width: 50px;
+    height: 50px;
+    margin: 8px;
+    vertical-align: middle;
+    border-radius: 50%;   /* makes icons round */
+    object-fit: cover;    /* ensures the image scales correctly inside circle */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* optional: adds a nice shadow */
+  }
+
+/* For custom SVG icons like MAL & Pixiv */
+.footer .custom-icon {
+  width: 28px;
+  height: 28px;
+  vertical-align: middle;
+  filter: invert(1); /* makes them white to match FA icons */
+  margin: 0 12px;
+  transition: filter 0.3s;
+}
+
+.footer .custom-icon:hover {
+  filter: invert(0); /* turns them dark on hover */
+}
+
+.modal-content {
+  background: #4a4a4a;
+  border-radius: 16px;
+}
+.modal-body h2 { font-weight: 700; }
+.modal-body h5 { font-weight: 600; margin-bottom: 15px; }
+
+/* Custom Gallery Look */
+#adGalleryModal img {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+#adGalleryModal img:hover {
+  transform: scale(1.05);
+}
+
+
+
+  </style>
 </head>
+<!-- Lightbox2 CSS & JS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+
 <body>
-    <img src="images/stdkatalogo.png" alt="Profile" class="profile-image">
-
-    <br><br><br>
-    <div class="social-links">
-        <a href="https://twitter.com/a1_nice" class="social-link">
-            <div class="social-icon" style="background-color: #1DA1F2;">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
-                </svg>
-            </div>
-            <div class="link-name">Twitter</div>
-        </a>
-        <a href="https://web.facebook.com/profile.php?id=100031029731992" class="social-link">
-            <div class="social-icon" style="background-color: #3B5998;">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-                </svg>
-            </div>
-            <div class="link-name">Facebook</div>
-        </a>
-        <a href="https://www.youtube.com/channel/UCCZW7GDBLRsWPRKqb1YlLgA/" class="social-link">
-            <div class="social-icon" style="background-color: #FF0000;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-youtube" viewBox="0 0 16 16">
-                    <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z"/>
-                </svg>
-            </div>
-            <div class="link-name">YouTube</div>
-        </a>
-        <a href="https://www.twitch.tv/tiskatta" class="social-link">
-            <div class="social-icon" style="background-color: #6441A5;">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 2H3v16h5v4l4-4h5l4-4V2zm-10 9V7m5 4V7"/>
-                </svg>
-            </div>
-            <div class="link-name">Twitch</div>
-        </a>
-        <a href="https://www.pixiv.net/en/users/17350585" class="social-link">
-            <div class="social-icon" style="background-color: #0096FA;">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm171.5 84c41 0 76.3 12.9 101.4 35.2l0 0c25.2 22.2 39.8 54.1 39.8 88.8c.1 35.3-16.6 66.3-42.4 87c-25.9 20.8-60.6 32.4-98.8 32.4c-43.5 0-83.8-16.1-83.8-16.1v51.8c7.4 2.2 19.7 7 11.9 14.8H104.8c-7.7-7.8 3.6-12.4 12.1-14.8V175.5C97.1 190.9 87 204.3 81.8 214.2c6 19.4-5.3 18.5-5.3 18.5L56 199.7s72.7-83.7 179.5-83.7zm-3.6 222.9c30 0 56-11.3 73.9-29.2c17.9-18.1 27.9-41.6 28-70.2c-.1-29.3-9.5-54.6-26.7-73.6c-17.2-18.9-42.7-31.3-75.2-31.4c-26.7-.1-59.8 9-80.2 23.7V323.1c18.6 9.3 46.8 15.9 80.2 15.8z"/></svg>
-            </div>
-            <div class="link-name">Pixiv</div>
-        </a>
-        <a href="https://myanimelist.net/animelist/KisekiKatan" class="social-link">
-            <div class="social-icon" style="background-color: #2E51A2;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 24 24">
-                    <path fill="currentColor" d="M8.273 7.247v8.423l-2.103-.003v-5.216l-2.03 2.404l-1.989-2.458l-.02 5.285H.001L0 7.247h2.203l1.865 2.545l2.015-2.546l2.19.001zm8.628 2.069l.025 6.335h-2.365l-.008-2.871h-2.8c.07.499.21 1.266.417 1.779c.155.381.298.751.583 1.128l-1.705 1.125c-.349-.636-.622-1.337-.878-2.082a9.296 9.296 0 0 1-.507-2.179c-.085-.75-.097-1.471.107-2.212a3.908 3.908 0 0 1 1.161-1.866c.313-.293.749-.5 1.1-.687c.351-.187.743-.264 1.107-.359a7.405 7.405 0 0 1 1.191-.183c.398-.034 1.107-.066 2.39-.028l.545 1.749H14.51c-.593.008-.878.001-1.341.209a2.236 2.236 0 0 0-1.278 1.92l2.663.033l.038-1.81h2.309zm3.992-2.099v6.627l3.107.032l-.43 1.775h-4.807V7.187l2.13.03z"/>
-                  </svg>
-            </div>
-            <div class="link-name">MyAnimeList</div>
-        </a>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container d-flex justify-content-center">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" href="#home" onclick="showPage('home', event); return false;">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#about" onclick="showPage('about', event); return false;">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact" onclick="showPage('contact', event); return false;">Contact</a>
+        </li>
+        
+      </ul>
     </div>
+  </nav>
+  <!-- Content Wrapper -->
+  <div class="content-wrapper">
+    <!-- Home Page -->
+    <section id="home" class="page-section active">
+      <img src="images/Logo.png" alt="Logo" class="logo">
+      <p class="logo-text">Aphirak Thaew-in</p>
+      <h2 class="mb-5">"I create content for digital platforms—sometimes film, sometimes games."</h2>
 
-    <!-- Bootstrap JS (optional) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+      <div class="container">
+        <div class="row g-4 justify-content-center">
+          <div class="col-md-4 col-sm-6">
+            <div class="image-card" onclick="showPage('shortfilms', event)">
+              <img src="images/film.png" alt="Film"><div class="overlay">Short Film</div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6">
+            <div class="image-card" onclick="showPage('edited', event)">
+              <img src="images/edited.png" alt="Edited Video"><div class="overlay">Edited Video</div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6">
+            <div class="image-card" onclick="showPage('artwork', event)">
+              <img src="images/Animated.png" alt="Artwork"><div class="overlay">Artwork</div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6">
+            <div class="image-card">
+              <div class="image-card" onclick="showPage('games', event)">
+              <img src="images/Game.png" alt="Games"><div class="overlay">Games</div>
+            </div>
+          </div>
+        </div>
+    </section>
+
+<section id="about" class="page-section">
+  <h2 class="mb-4">About</h2>
+  <div class="text-center">
+    <img src="images/me.png" 
+         class="rounded-circle shadow-lg mb-3 about-img" 
+         alt="Me">
+    <p>
+      <strong>อภิรักษ์ แถวอินทร์ (ไนซ์)</strong><br>
+      นามปากกา Kata (คาตะ)<br>
+      เกิดวันที่ 12 มกราคม
+    </p>
+    <p>
+      ผมเป็นคนที่ชอบพัฒนาและหาทักษะใหม่ ๆ ใส่ตัวอยู่เสมอ <br>
+      โดยเฉพาะด้านดิจิตอลมีเดียและการสร้างสรรค์ความบันเทิงสู่โลกออนไลน์ผ่านผลงานสนุกๆ
+      <br><br>
+      ผมหลงใหลในโลกของภาพเคลื่อนไหวมาตั้งแต่เด็กแล้ว ทั้งภาพยนตร์ ซีรี่ย์ การ์ตูน อนิเมะ เกม หรือแม้แต่คลิปทั่วไปในอินเตอร์เน็ต และอยากจะสร้างมันด้วยมือของตัวเองมาโดยตลอด
+      แต่ด้วยความที่เป็นคนพูดน้อย ผมจึงศึกษาเรื่องต่าง ๆ ด้วยตัวเองซึ่งมันทำให้ผมเห็นคุณค่าในงานเหล่านี้มากขึ้น และหวังว่าจะได้เป็นหนึ่งในกำลังขับเคลื่อนของวงการบ้างไม่มากก็น้อย
+    </p><br>
+    <p>
+      <h4>Skills</h4>
+      <div class="about-block mt-5">
+      <strong>ภาษา:</strong> ไทย, อังกฤษ, ญี่ปุ่น (พื้นฐาน)<br>
+        <strong>ซอร์ฟแวร์: </strong>
+        <img src="icons/davinci.png" class="software-icon" alt="Davinci Resolve">
+        <img src="icons/capcut.jpg" class="software-icon" alt="Capcut">
+        <img src="icons/adobe.png" class="software-icon" alt="Adobe">
+        <img src="icons/unity.png" class="software-icon" alt="Unity">
+      </p>
+    <p>
+      <strong>อุปกรณ์:</strong> 
+      สามารถใช้อุปกรณ์ในสายงาน Production ได้ มีประสบการณ์การใช้กล้องหลายรูปแบบทั้งกล้องมือถือ Gopro, DJI, 
+      และกล้องถ่ายทำภาพยนต์ Sony FX, Arri Amira
+    </p><br>
+  </div>
+  </div>
+
+  <!-- Work Experience -->
+  <h4>Work Experience</h4>
+  <div class="about-block mt-5">
+
+    <ul>
+      <li><strong>2025 | GMM Music</strong><br>
+        Video Editor แผนก Creative Lab ในโปรเจ็ค VGi Sky Vibes</li>
+      <li><strong>2024-2025 | Popcorn House</strong><br>
+        Camera Assistant: “Life After Life”<br>
+        DOP: “7 Rule 7 Day”<br>
+        Camera Man & Editor: โฆษณา Healthfoods “ฟาร์มสุข”<br>
+        Camera Man & Editor: โปรโมทคณะนิเทศศาสตร์</li>
+      <li><strong>2024 | Innocent</strong><br>
+        Camera Assistant: “Life After Life”<br>
+        DOP: “7 Rule 7 Day”<br>
+        Camera Man & Editor: โฆษณา Healthfoods “ฟาร์มสุข”<br>
+        Camera Man & Editor: โปรโมทคณะนิเทศศาสตร์</li>
+      <li><strong>2022 | Noiwa Filmhouse</strong><br>
+        Lighting Technician: “เพื่อนรักเพื่อนหลอน”</li>
+    </ul>
+  </div>
+
+  <!-- Education -->
+  <h4>Education</h4>
+  <div class="about-block mt-5">
+    <ul>
+      <li><strong>2020 - 2024</strong> คณะนิเทศศาสตร์ สาขาภาพยนตร์และสื่อดิจิทัล มหาวิทยาลัยศรีปทุม</li>
+      <li><strong>2014 - 2020</strong> เอกศิลปะและภาษาญี่ปุ่น โรงเรียนสิริรัตนาธร</li>
+    </ul>
+  </div>
+</section>
+    
+
+    <!-- Contact Page -->
+    <section id="contact" class="page-section">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:nice-a1@hotmail.com" class="email-link">nice-a1@hotmail.com</a>
+      <p>Tel: 082-488-9940</p>
+      <p>Line ID: nicehaha555</p>
+    </section>
+
+    <!-- Short Films Page -->
+    <section id="shortfilms" class="page-section">
+      <div class="container">
+        <h2 class="mb-5 text-start">Short Film Work</h2>
+        <div class="row g-4">
+          <!-- Film 1 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="image-card" data-bs-toggle="modal" data-bs-target="#filmModal1">
+              <img src="images/film.png" alt="Life After Life">
+              <div class="overlay">Life After Life</div>
+            </div>
+          </div>
+          <!-- Film 2 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="image-card" data-bs-toggle="modal" data-bs-target="#filmModal2">
+              <img src="images/film2.jpg" alt="ผีขี้บูลลี่">
+              <div class="overlay">ผีขี้บูลลี่</div>
+            </div>
+          </div>
+          <!-- Film 3 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="image-card" data-bs-toggle="modal" data-bs-target="#filmModal3">
+              <img src="images/film3.jpg.png" alt="7 Rules 7 Days">
+              <div class="overlay">7 Rules 7 Days</div>
+            </div>
+          </div>
+          <!-- Film 4 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="image-card" data-bs-toggle="modal" data-bs-target="#filmModal4">
+              <img src="images/film4.png" alt="Another Film">
+              <div class="overlay">วันชิล</div>
+            </div>
+          </div>
+          <!-- Film 5 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="image-card" data-bs-toggle="modal" data-bs-target="#filmModal5">
+              <img src="images/film5.jpeg.png" alt="Action Short">
+              <div class="overlay">Starlight</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+       <!-- Short Films Page -->
+       <section id="edited" class="page-section">
+        <div class="container">
+          <h2 class="mb-5 text-start">Commercial Work</h2>
+          <div class="row g-4">
+            <!-- Film 1 -->
+            <div class="col-md-6 col-lg-4">
+              <div class="image-card" data-bs-toggle="modal" data-bs-target="#editModal1">
+                <img src="images/edit1.png" alt="SkyVibe">
+                <div class="overlay">Recap video of GMM Music's VGI Sky Vibes</div>
+              </div>
+            </div>
+            <!-- Film 2 -->
+            <div class="col-md-6 col-lg-4">
+              <div class="image-card" data-bs-toggle="modal" data-bs-target="#editModal2">
+                <img src="images/edit2.png" alt="FZT">
+                <div class="overlay">Short Video โปรโมทเพลง "เก็บรักฉันเอาไว้กับเธอ"</div>
+              </div>
+            </div>
+            <!-- Film 4 -->
+            <div class="col-md-6 col-lg-4">
+              <div class="image-card" data-bs-toggle="modal" data-bs-target="#editModal3">
+                <img src="images/edit4.jpg" alt="Dinopark">
+                <div class="overlay">Ads Video Concept ไดโนพาร์ค "อร่อยเพลินจนอยากให้สูญพันธุ์"</div>
+              </div>
+            </div>
+            <!-- Film 5 -->
+            <div class="col-md-6 col-lg-4">
+              <div class="image-card" data-bs-toggle="modal" data-bs-target="#editModal4">
+                <img src="images/edit5.png" alt="OishiOnePice">
+                <div class="overlay">Marketing Ads Concept โออิชิ กรีนทรี "ออกสมุดหาล่าโออิชิกรีนทรี"</div>
+              </div>
+            </div>
+                        <!-- Film 4 -->
+                        <div class="col-md-6 col-lg-4">
+                          <div class="image-card" data-bs-toggle="modal" data-bs-target="#editModal5">
+                            <img src="images/edit6.png" alt="Farmsuk">
+                            <div class="overlay">Ads Video Contest ฟาร์มสุข "วิธีทำไก่สูตรนมสดพร้อมย่างของฟาร์มสุขแบบง่ายๆ ไม่ง้อคุณแม่"</div>
+                          </div>
+                        </div>
+          </div>
+        </div>
+        
+        <br><br>
+        <h2 class="mb-5 text-start">Youtube Video Work</h2>
+          <div class="row g-4">
+                                                                                    <!-- Film 3 -->
+                        <div class="col-md-6 col-lg-4">
+                          <div class="image-card" data-bs-toggle="modal" data-bs-target="#editModal6">
+                            <img src="images/edit8.png" alt="YoutubeCH2">
+                            <div class="overlay">Editor of Rant Channel "Kata"</div>
+                          </div>
+                        </div>
+                                                <!-- Film 3 -->
+                        <div class="col-md-6 col-lg-4">
+                          <div class="image-card" data-bs-toggle="modal" data-bs-target="#editModal7">
+                            <img src="images/edit7.png" alt="YoutubeCH1">
+                            <div class="overlay">Editor of Gaming Channel "Katta"</div>
+                          </div>
+                        </div>
+                                                <!-- Film 3 -->
+                        <div class="col-md-6 col-lg-4">
+                          <div class="image-card" data-bs-toggle="modal" data-bs-target="#editModal8">
+                            <img src="images/edit3.jpg" alt="IDontKnowWorld">
+                            <div class="overlay">Mockumentary กู(ไม่)รูโลก</div>
+                          </div>
+                        </div>
+                                                <!-- Film 3 -->
+                        <div class="col-md-6 col-lg-4">
+                          <div class="image-card" data-bs-toggle="modal" data-bs-target="#editModal9">
+                            <img src="images/edit10.jpg" alt="MVJaiRoy">
+                            <div class="overlay">Cover Music Video "ใจลอย"</div>
+                          </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                          <div class="image-card" data-bs-toggle="modal" data-bs-target="#editModal10">
+                            <img src="images/edit11.jpeg" alt="Chayen">
+                            <div class="overlay">เกมโชว์ "ชาร้อนคอแห้ง"</div>
+                          </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                          <div class="image-card" data-bs-toggle="modal" data-bs-target="#editModal11">
+                            <img src="images/edit9.png" alt="HutaoSeiso">
+                            <div class="overlay">Meme Music Video "Hu Tao - Say So"</div>
+                          </div>
+                        </div>
+      </section>
+      <section id="artwork" class="page-section py-5">
+        <div class="container">
+          <!-- Animated Artwork -->
+          <h2 class="mb-5 text-start">Animated Artwork</h2>
+          <div class="row">
+            <div class="col-md-6 col-lg-4">
+              <div class="image-card" data-bs-toggle="modal" data-bs-target="#animatedModal1">
+                <img src="images/animated.png" alt="Animated Artwork 1">
+                <div class="overlay">VGI Sky Vibes 2024-2025 Animated Banner/AW and Backdrop Screen</div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="image-card" data-bs-toggle="modal" data-bs-target="#animatedModal2">
+                <img src="images/art2.png" alt="Animated Artwork 2">
+                <div class="overlay">เลย์ STAX</div>
+              </div>
+            </div>
+          </div>
+      
+          <!-- Advertisement -->
+          <h2 class="mt-5 mb-5 text-start">Advertisement Image</h2>
+          <div class="row">
+            <div class="col-md-6 col-lg-4">
+              <div class="image-card" data-bs-toggle="modal" data-bs-target="#adModal1">
+                <img src="images/art3.png" alt="Advertisement 1">
+                <div class="overlay">โออิชิ กรีนที</div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="image-card" data-bs-toggle="modal" data-bs-target="#adModal2">
+                <img src="images/art4.png" alt="Advertisement 2">
+                <div class="overlay">โออิชิ กรีนที x One Piece Facebook Gallery</div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="image-card" data-bs-toggle="modal" data-bs-target="#adModal3">
+                <img src="images/art5.png" alt="Advertisement 2">
+                <div class="overlay">ฟาร์มสุข Product Photography</div>
+              </div>
+            </div>  
+      
+          <!-- Digital Art -->
+          <h2 class="mt-5 mb-5 text-start">Digital Art</h2>
+          <div class="row">
+            <div class="col-md-6 col-lg-4">
+              <div class="image-card" data-bs-toggle="modal" data-bs-target="#digitalModal1">
+                <img src="images/art6.png" alt="Digital Art 1">
+                <div class="overlay">Game Illustration "Tardiness Girl"</div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="image-card" data-bs-toggle="modal" data-bs-target="#digitalModal2">
+                <img src="images/DigitalArt.png" alt="Digital Art 2">
+                <div class="overlay">Fan Art Gawr Gura "King" </div>
+              </div>
+            </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="image-card" data-bs-toggle="modal" data-bs-target="#digitalModal3">
+              <img src="images/art7.png" alt="Digital Art 2">
+              <div class="overlay">Animation "Katta Dance" </div>
+            </div>
+          </div>
+          
+      
+          <!-- Etc. -->
+          <h2 class="mt-5 mb-5 text-start">Etc.</h2>
+          <div class="row">
+            <div class="col-md-6 col-lg-4">
+              <div class="image-card" data-bs-toggle="modal" data-bs-target="#etcModal1">
+                <img src="images/art10.png" alt="Etc 1">
+                <div class="overlay">Board Game Co-Illustration/Design "Galactic Scallywags"</div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="image-card" data-bs-toggle="modal" data-bs-target="#etcModal2">
+                <img src="images/art8.png" alt="Etc 1">
+                <div class="overlay">KamiAmagumoSub Page Logo/Artwork</div>
+              </div>
+            </div>
+      </section>
+      <!-- Games Page -->
+    <section id="games" class="page-section">
+      <div class="container">
+        <h2 class="mb-5 text-start">Games</h2>
+        <div class="row g-4">
+          <!-- Film 1 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="image-card" data-bs-toggle="modal" data-bs-target="#game1">
+              <img src="images/Game.png" alt="Tardiness GirlTardiness Girl">
+              <div class="overlay">Tardiness Girl (Steam/PC)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+          <!-- Modal Template -->
+<div class="modal fade" id="game1" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content bg-dark text-white rounded-4">
+      <div class="modal-body">
+        <div class="row g-4">
+          <!-- Left text section -->
+          <div class="col-md-6">
+            <h2>Tardiness Girl</h2>
+            <h5>Aug 28, 2025 | Steam</h5>
+            <p><strong>Job Duty: </strong>Programmer, Artist, Game Design</p>
+            <p>
+              รับบทเป็นสาวมัธยม JK ผู้ตื่นสายและจะต้องฟันฝ่าอุปสรรค์ต่าง ๆ เพื่อไปให้ถึงโรงเรียนให้ทันเวลา เตรียมพบกับบรรดาอุปสรรค์ ศัตรูและสาว ๆ สุดน่ารักจากโลกอนิเมะในสไตล์ที่คุณคุ้นเคย<br>
+
+              <br>หลังจากใช้เวลาในการศึกษาการสร้างเกมด้วย Unity ด้วยตัวเองมาตลอด 6 ปี เกมนี้ก็ได้ถูกสร้างขึ้นและนำไปวางจำหน่ายลงบน Steam โดยตัวเกมใช้เวลาพัฒนารวมเพียง 1 เดือน ทั้งนี้โปรเจ็คนี้เป็นเพียงแค่งานอดิเรกเพื่อการสานฝันเล็ก ๆ ของตัวเอง ไม่ได้ตั้งใจทำให้มันโด่งดังหรือขายดีแต่อย่างใด
+              <br><a href="https://store.steampowered.com/app/3929050/Tardiness_Girl">รายละเอียดเพิ่มเติม (STEAM)</a>
+            </p>
+          </div>
+
+          <!-- Right video section -->
+          <div class="col-md-6">
+            <div class="row g-3">
+              <!-- First video -->
+              <div class="col-12">
+                <div class="ratio ratio-16x9">
+                  <iframe src="https://www.youtube.com/embed/OyqRPpUQ-Jc?rel=0&start=1" 
+                          title="Gameplay Video 1" 
+                          allowfullscreen></iframe>
+                </div>
+              </div>
+              <!-- Second video -->
+              <div class="col-12">
+                <div class="ratio ratio-16x9">
+                  <iframe src="https://www.youtube.com/embed/N7r-0aTTMpk?rel=0&start=1" 
+                          title="Gameplay Video 2" 
+                          allowfullscreen></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End Right video section -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>      <!-- Modal Template -->
+<div class="modal fade" id="filmModal1" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content bg-dark text-white rounded-4">
+      <div class="modal-body">
+        <div class="row g-4">
+          <!-- Left text section -->
+          <div class="col-md-6">
+            <h2>Life After Life</h2>
+            <h5>Popcorn House</h5>
+            <p><strong>Job Duty: </strong>Camera Assistant, Trailer Editor (Uncredited), Composition (Uncredited)</p>
+            <p>
+              เมื่อชีวิตที่เต็มไปด้วยชัยชนะของ “นภา” ต้องเผชิญกับความล้มเหลวครั้งใหญ่ในชีวิต ความสิ้นหวังและจิตใจที่บอบช้ำ
+              นำพาตัวเธอไปสู่ประสบการณ์เฉียดตาย การเดินทางระหว่างความเป็นและความตาย กลับเผยความจริงที่ได้เปลี่ยนชีวิตเธอไปตลอดกาล<br><br>ภาพยนตร์ดราม่าขนาดสั้น 12 นาที งบประมาณสร้าง 2 แสนบาท ถ่ายทําด้วยกล้อง Sony FX3 เข้าฉายครั้งแรกที่เทศกาลฉายหนังครั้งที่ 7<br><a href="https://www.chainang.in.th/movie/lifeafterlife">รายละเอียดเพิ่มเติม</a>
+            </p>
+          </div>
+          <!-- Right video section -->
+          <div class="col-md-6 d-flex justify-content-center align-items-center">
+            <div class="ratio ratio-16x9 w-100">
+              <!-- YouTube embed -->
+              <iframe src="https://www.youtube.com/embed/mMhsuowsYBU?rel=0&start=1" 
+                      title="Life After Life" 
+                      allowfullscreen></iframe>
+              <!-- Or Google Drive link:
+              <iframe src="https://drive.google.com/file/d/FILE_ID/preview" allow="autoplay"></iframe>
+              -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+      <!-- Modal Template -->
+<div class="modal fade" id="filmModal1" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content bg-dark text-white rounded-4">
+      <div class="modal-body">
+        <div class="row g-4">
+          <!-- Left text section -->
+          <div class="col-md-6">
+            <h2>Life After Life</h2>
+            <h5>Popcorn House</h5>
+            <p><strong>Job Duty: </strong>Camera Assistant, Trailer Editor (Uncredited), Composition (Uncredited)</p>
+            <p>
+              เมื่อชีวิตที่เต็มไปด้วยชัยชนะของ “นภา” ต้องเผชิญกับความล้มเหลวครั้งใหญ่ในชีวิต ความสิ้นหวังและจิตใจที่บอบช้ำ
+              นำพาตัวเธอไปสู่ประสบการณ์เฉียดตาย การเดินทางระหว่างความเป็นและความตาย กลับเผยความจริงที่ได้เปลี่ยนชีวิตเธอไปตลอดกาล<br><br>ภาพยนตร์ดราม่าขนาดสั้น 12 นาที งบประมาณสร้าง 2 แสนบาท ถ่ายทําด้วยกล้อง Sony FX3 เข้าฉายครั้งแรกที่เทศกาลฉายหนังครั้งที่ 7<br><a href="https://www.chainang.in.th/movie/lifeafterlife">รายละเอียดเพิ่มเติม</a>
+            </p>
+          </div>
+          <!-- Right video section -->
+          <div class="col-md-6 d-flex justify-content-center align-items-center">
+            <div class="ratio ratio-16x9 w-100">
+              <!-- YouTube embed -->
+              <iframe src="https://www.youtube.com/embed/mMhsuowsYBU?rel=0&start=1" 
+                      title="Life After Life" 
+                      allowfullscreen></iframe>
+              <!-- Or Google Drive link:
+              <iframe src="https://drive.google.com/file/d/FILE_ID/preview" allow="autoplay"></iframe>
+              -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <!-- Modal Template -->
+      <div class="modal fade" id="filmModal2" tabindex="-1">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+          <div class="modal-content bg-dark text-white rounded-4">
+            <div class="modal-body">
+              <div class="row g-4">
+                <!-- Left text section -->
+                <div class="col-md-6">
+                  <h2>ผีขี้บูลลี่</h2>
+                  <h5>INNOCENT</h5>
+                  <p><strong>Job Duty: </strong>Director, Editor, Camera</p>
+                  <p>
+                    หนังสั้นในหัวข้อ คนไทยไม่บูลลี่ ทําออกมาในแนวสยองขวัญ-ตลก ว่าด้วยเรื่องของชายคนนึงที่ถูกผีในห้องน้ำบูลลี่เรื่องหน้าตา
+                    <br><br>ถ่ายทำด้วยกล้อง iPhone 14 และได้รับคําชื่นชมในเรื่องความสร้างสรรค์จากอาจารย์ผู้สอนจากบริษัทเอเจนซี Far East Fame Line DDB
+                  </p>
+                </div>
+                <!-- Right video section -->
+                <div class="col-md-6 d-flex justify-content-center align-items-center">
+                  <div class="ratio ratio-16x9 w-100">
+                    <!-- YouTube embed -->
+                    <iframe src="https://www.youtube.com/embed/ZjeN4r2nh3s?rel=0&start=1" 
+                            title="ผีขี้บูลลี่" 
+                            allowfullscreen></iframe>
+                    <!-- Or Google Drive link:
+                    <iframe src="https://drive.google.com/file/d/FILE_ID/preview" allow="autoplay"></iframe>
+                    -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Template -->
+      <div class="modal fade" id="filmModal3" tabindex="-1">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+          <div class="modal-content bg-dark text-white rounded-4">
+            <div class="modal-body">
+              <div class="row g-4">
+                <!-- Left text section -->
+                <div class="col-md-6">
+                  <h2>7 Rules 7 Days</h2>
+                  <h5>Popcorn House</h5>
+                  <p><strong>Job Duty: </strong>Director of Photography, Storyboard (Uncredited), Drift 1 Editor (Uncredited)</p>
+                  <p>
+                    แสน ชายหนุ่มผู้ตกงานและเป็นหนี้อย่างท่วมท้น เขาได้เจอเข้ากับงาน Part Time เฝ้าห้องแลปที่มีอัตราค่าจ้างให้ในราคาที่สูงทำเพียงแค่ 7 วัน เขาตัดสินใจที่จะเข้าไปทำงานนี้อย่างไม่รอช้าและได้เริ่มงานทันทีในวันถัดไป แต่งานเฝ้าห้องที่แลดูจะสบายง่ายๆ กลับเป็นงานที่ต้องทำตามกฎอย่างเคร่งครัดและแอบแฝงมาด้วยความน่ากลัวที่เริ่มทวีคูณขึ้นจนกระทั่งเขาพลาดทำผิดกฎก่อนจะพยามหลีกหนีมันสุดชีวิต ท้ายสุดเขาตื่นจากนิทราพร้อมด้วยความเจ็บทั่วร่างกายที่มิอาจเป็นเพียงแค่ความฝัน แต่ทุกอย่างกลับเป็นความจริง
+                    <br><br>ถ่ายทำด้วยกล้อง Arri Amira ด้วยเวลาถ่ายทำ 1 วัน
+                  </p>
+                </div>
+                <!-- Right video section -->
+                <div class="col-md-6 d-flex justify-content-center align-items-center">
+                  <div class="ratio ratio-16x9 w-100">
+                    <!-- YouTube embed -->
+                    <iframe src="https://www.youtube.com/embed/7qvYYo0WuKE?rel=0&start=1" 
+                            title="7R7D" 
+                            allowfullscreen></iframe>
+                    <!-- Or Google Drive link:
+                    <iframe src="https://drive.google.com/file/d/FILE_ID/preview" allow="autoplay"></iframe>
+                    -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Template -->
+      <div class="modal fade" id="filmModal4" tabindex="-1">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+          <div class="modal-content bg-dark text-white rounded-4">
+            <div class="modal-body">
+              <div class="row g-4">
+                <!-- Left text section -->
+                <div class="col-md-6">
+                  <h2>วันชิล</h2>
+                  <h5>INNOCENT</h5>
+                  <p><strong>Job Duty: </strong>Director, Editor, Camera</p>
+                  <p>
+                    วันหนึ่งที่แสนชิว ณ ห้องสมุด
+                    <br><br>ถ่ายทำด้วยกล้อง Canon E200D เป็นผลงานในหัวข้อ การถ่ายทำด้วยสไตล์ Wes Anderson
+                  </p>
+                </div>
+                <!-- Right video section -->
+                <div class="col-md-6 d-flex justify-content-center align-items-center">
+                  <div class="ratio ratio-16x9 w-100">
+                    <!-- YouTube embed -->
+                    <iframe src="https://www.youtube.com/embed/NUIxejsVz48?rel=0&start=1" 
+                            title="วันชิล" 
+                            allowfullscreen></iframe>
+                    <!-- Or Google Drive link:
+                    <iframe src="https://drive.google.com/file/d/FILE_ID/preview" allow="autoplay"></iframe>
+                    -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+            <!-- Modal Template -->
+            <div class="modal fade" id="filmModal5" tabindex="-1">
+              <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="modal-content bg-dark text-white rounded-4">
+                  <div class="modal-body">
+                    <div class="row g-4">
+                      <!-- Left text section -->
+                      <div class="col-md-6">
+                        <h2>Starlight</h2>
+                        <h5>INNOCENT</h5>
+                        <p><strong>Job Duty: </strong>Director, Editor, Camera</p>
+                        <p>
+                          นักเลงผู้ใช้ Light Saber สองคนต้องมาฟาดฟันกัน
+                          <br><br>ถ่ายทำด้วยกล้อง iPhone 14 เป็นผลงานแสดงการทำ Visual Effect ในวิชาการตัดต่อขั้นสูง
+                        </p>
+                      </div>
+                      <!-- Right video section -->
+                      <div class="col-md-6 d-flex justify-content-center align-items-center">
+                        <div class="ratio ratio-16x9 w-100">
+                          <!-- YouTube embed -->
+                          <iframe src="https://www.youtube.com/embed/Ng2Y7g0VgOQ?rel=0&start=1" 
+                                  title="Starlight" 
+                                  allowfullscreen></iframe>
+                          <!-- Or Google Drive link:
+                          <iframe src="https://drive.google.com/file/d/FILE_ID/preview" allow="autoplay"></iframe>
+                          -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+                        <!-- Modal Template -->
+                        <div class="modal fade" id="editModal1" tabindex="-1">
+                          <div class="modal-dialog modal-xl modal-dialog-centered">
+                            <div class="modal-content bg-dark text-white rounded-4">
+                              <div class="modal-body">
+                                <div class="row g-4">
+                                  <!-- Left text section -->
+                                  <div class="col-md-6">
+                                    <h2>Recap video of GMM Music's VGI Sky Vibes</h2>
+                                    <h5>GMM Music</h5>
+                                    <p><strong>Job Duty: </strong>Editor</p>
+                                    <p>
+                                      วีดีโอนำเสนอภาพรวมหรือรีแคปของงาน VGI Sky Vibes ที่จัดตลอดทั้งปี พ.ศ 2567 - 2568 ความยาว 1 นาที
+                                      <br><br>ออกอากาศทางช่อง One31 ในช่วง Comercial Spot ประจำเดือนเมษายน พ.ศ 2568
+                                    </p>
+                                  </div>
+                                  <!-- Right video section -->
+                                  <div class="col-md-6 d-flex justify-content-center align-items-center">
+                                    <div class="ratio ratio-16x9 w-100">
+                                      <!-- YouTube embed -->
+                                      <iframe src="https://drive.google.com/file/d/19S5rEO4Wy6GyQ0ntK4cjAaA2s4dwWJqO/preview" allow="autoplay"></iframe>
+                                              title="Starlight" 
+                                              allowfullscreen></iframe>
+                                      <!-- Or Google Drive link:
+                                      <iframe src="https://drive.google.com/file/d/19S5rEO4Wy6GyQ0ntK4cjAaA2s4dwWJqO/preview" allow="autoplay"></iframe>
+                                      -->
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Modal Template -->
+<div class="modal fade" id="editModal2" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content bg-dark text-white rounded-4">
+      <div class="modal-body">
+        <div class="row g-4">
+          <!-- Left text section -->
+          <div class="col-md-6">
+            <h2>Short Video โปรโมทเพลง "เก็บรักฉันเอาไว้กับเธอ"</h2>
+            <h5>GMM Music</h5>
+            <p><strong>Job Duty: </strong>Editor, Camera</p>
+            <p>
+              วีดีโอโปรโมทเพลง "เก็บรักฉันเอาไว้กับเธอ" โดยทำเป็นช่วงถามตอบกับศิลปินและให้ศิลปินแร็ปท่อนหนึ่งของเพลง
+              <br><br>ถ่ายทำด้วยกล้อง DJI Pocket 3 เผยแพร่ทางช่อง TikTok ของศิลปิน @firzterofficial
+            </p>
+          </div>
+          <!-- Right video section -->
+          <div class="col-md-6 d-flex justify-content-center align-items-center">
+            <div class="ratio ratio-9x16 w-100">
+              <!-- TikTok embed -->
+              <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@firzterofficial/video/7467887836654603537" 
+                data-video-id="7467887836654603537" style="max-width: 605px;min-width: 325px;">
+                <section> </section>
+              </blockquote>
+              <script async src="https://www.tiktok.com/embed.js"></script>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal Template -->
+<div class="modal fade" id="editModal3" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content bg-dark text-white rounded-4">
+      <div class="modal-body">
+        <div class="row g-4">
+          <!-- Left text section -->
+          <div class="col-md-6">
+            <h2>Ads Video Concept ไดโนพาร์ค "อร่อยเพลินจนอยากให้สูญพันธุ์"</h2>
+            <h5>INNOCENT</h5>
+            <p><strong>Job Duty: </strong>Director, Editor, Camera</p>
+            <p>
+              คอนเซ็ปต์วีดีโอโฆษณาไดโนพาร์ค ทําออกมาในรูปแบบคล้ายกับวีดีโอสอนความรู้ แต่แทนที่ไดโนเสาร์จริง ๆ ด้วยขนม
+              <br><br>ถ่ายทำด้วยกล้อง iPhone 14 และได้รับคําชื่นชมในเรื่องความสร้างสรรค์จากกรรมการที่เป็นผู้กํากับหนังมืออาชีพ คุณณภัทร โกสีย์จาก สุขนิยมโปรดักชั่น
+            </p>
+          </div>
+          <!-- Right video section -->
+          <div class="col-md-6 d-flex justify-content-center align-items-center">
+            <div class="ratio ratio-16x9 w-100">
+              <!-- YouTube embed -->
+              <iframe src="https://www.youtube.com/embed/WPt3qCY55qo?rel=0&start=1" 
+                      title="Dinopark" 
+                      allowfullscreen></iframe>
+              <!-- Or Google Drive link:
+              <iframe src="https://drive.google.com/file/d/FILE_ID/preview" allow="autoplay"></iframe>
+              -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="editModal4" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content bg-dark text-white rounded-4">
+      <div class="modal-body">
+        <div class="row g-4">
+          <!-- Left text section -->
+          <div class="col-md-6">
+            <h2>Marketing Ads Concept โออิชิ กรีนทรี "ออกสมุดหาล่าโออิชิกรีนทรี"</h2>
+            <h5>INNOCENT</h5>
+            <p><strong>Job Duty: </strong>Editor, Camera</p>
+            <p>
+              ทำคอนเซ็ปต์สำหรับโพสต์โฆษณาทาง Facebook และ Tiktok ของแบรนด์โออิชิ กรีนทรีทั้งรูปแบบภาพแกลลอรี่และวีดีโอ
+              <br><br>วีดีโอถ่ายทำด้วยกล้อง iPhone 14 และภาพนิ่งถ่ายทำด้วยกล้อง Canon E200D
+            </p>
+          </div>
+          <!-- Right video section -->
+          <div class="col-md-6 d-flex justify-content-center align-items-center">
+            <div class="ratio ratio-16x9 w-100">
+              <iframe src="https://drive.google.com/file/d/145MPJ6MIj8kmwg0qGWTqD-AlsArccBEC//preview" allow="autoplay"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal Template -->
+<div class="modal fade" id="editModal5" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content bg-dark text-white rounded-4">
+      <div class="modal-body">
+        <div class="row g-4">
+          <!-- Left text section -->
+          <div class="col-md-6">
+            <h2>Ads Video Contest ฟาร์มสุข "วิธีทำไก่สูตรนมสดพร้อมย่างของฟาร์มสุขแบบง่ายๆ ไม่ง้อคุณแม่"</h2>
+            <h5>INNOCENT</h5>
+            <p><strong>Job Duty: </strong>Director, Editor, Camera</p>
+            <p>
+              ประกวดทำวีดีโอสั้นโฆษณาสินค้าผลิตภัณฑ์ ไก่ย่างสูตรนมสดสำเร็จรูป ตรา ฟาร์มสุข
+              <br><br>วีดีโอถ่ายทำด้วยกล้อง iPhone 14 และได้รับรางวัลชมเชยมูลค่า 1,000 บาทจาก healthfoods เจ้าของแบรนด์ ฟาร์มสุข
+            </p>
+          </div>
+          <!-- Right video section -->
+          <div class="col-md-6 d-flex justify-content-center align-items-center">
+            <div class="ratio ratio-16x9 w-100">
+              <!-- YouTube embed -->
+              <iframe src="https://www.youtube.com/embed/vkB88uSjCzU?rel=0&start=1" 
+                      title="Dinopark" 
+                      allowfullscreen></iframe>
+              <!-- Or Google Drive link:
+              <iframe src="https://drive.google.com/file/d/FILE_ID/preview" allow="autoplay"></iframe>
+              -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal Template -->
+<div class="modal fade" id="editModal6" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content bg-dark text-white rounded-4">
+      <div class="modal-body">
+        <div class="row g-4">
+          <!-- Left text section -->
+          <div class="col-md-6">
+            <h2>Editor of Rant Channel "Kata"</h2>
+            <h5>Kata</h5>
+            <p><strong>Job Duty: </strong>Editor, Script, Voice</p>
+            <p>
+              ช่องยูทูปเฉพาะกลุ่มแนวพูดคุย บ่น โฟกัสที่ความชอบและงานอดิเรกของตัวเองเกี่ยวกับอนิเมะ เน้นการตัดต่อที่มีจังหวะรวดเร็ว มีการใส่มุกตลก กวนประสาทและมีคำหยาบคายอย่างมาก
+              <br><br>มีผู้ติดตาม 2.48k คน มีการ re-propose มาจากช่องเก่าที่ลงเกี่ยวกับอนิเมะและเพลง<br><a href="https://www.youtube.com/@kusokata">ช่องและวีดีโออื่น ๆ</a>
+            </p>
+          </div>
+          <!-- Right video section -->
+          <div class="col-md-6 d-flex justify-content-center align-items-center">
+            <div class="ratio ratio-16x9 w-100">
+              <!-- YouTube embed -->
+              <iframe src="https://www.youtube.com/embed/kD_Gn0HzLO8?rel=0&start=1" 
+                      title="Dinopark" 
+                      allowfullscreen></iframe>
+              <!-- Or Google Drive link:
+              <iframe src="https://drive.google.com/file/d/FILE_ID/preview" allow="autoplay"></iframe>
+              -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal Template -->
+<div class="modal fade" id="editModal7" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content bg-dark text-white rounded-4">
+      <div class="modal-body">
+        <div class="row g-4">
+          <!-- Left text section -->
+          <div class="col-md-6">
+            <h2>Editor of Gaming Channel "Katta"</h2>
+            <h5>Katta</h5>
+            <p><strong>Job Duty: </strong>Editor</p>
+            <p>
+              ช่องยูทูปแนวการเล่นวีดีโอเกม ส่วนใหญ่เป็นการตัดไฮไลท์จากการเล่นกับเพื่อน ๆ มาทำเป็นคลิปสนุก ๆ ดูง่าย ๆ (อาจจะมีคำหยาบคายและเนื้อหาทางเพศในบางวีดีโอ)
+              <br><br>อดีตเคยมีผู้ติดตาม 1k คน แต่เกิดปัญหาจนช่องต้องถูกปิดไป และเปิดขึ้นมาใหม่<br><a href="https://www.youtube.com/@tiskatta">ช่องและวีดีโออื่น ๆ</a>
+            </p>
+          </div>
+          <!-- Right video section -->
+          <div class="col-md-6 d-flex justify-content-center align-items-center">
+            <div class="ratio ratio-16x9 w-100">
+              <!-- YouTube embed -->
+              <iframe src="https://www.youtube.com/embed/uzqir9cjRxM?rel=0&start=1" 
+                      title="Katta" 
+                      allowfullscreen></iframe>
+              <!-- Or Google Drive link:
+              <iframe src="https://drive.google.com/file/d/FILE_ID/preview" allow="autoplay"></iframe>
+              -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal Template -->
+<div class="modal fade" id="editModal8" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content bg-dark text-white rounded-4">
+      <div class="modal-body">
+        <div class="row g-4">
+          <!-- Left text section -->
+          <div class="col-md-6">
+            <h2>Mockumentary กู(ไม่)รูโลก</h2>
+            <h5>INNOCENT</h5>
+            <p><strong>Job Duty: </strong>Director, Writer, Editor, Camera</p>
+            <p>
+              รายการสารคดีปลอมที่ได้แรงบันดาลใจมากจาก Cunk on Earth เกี่ยวกับเทศกาลวันสงกรานต์
+              <br><br>ถ่ายทำด้วยกล้อง iPhone 14 เป็นส่วนหนึ่งของวิชาการผลิตรายการบนสื่อออนไลน์ด้วยสมาร์ทโฟน<br>
+            </p>
+          </div>
+          <!-- Right video section -->
+          <div class="col-md-6 d-flex justify-content-center align-items-center">
+            <div class="ratio ratio-16x9 w-100">
+              <!-- YouTube embed -->
+              <iframe src="https://www.youtube.com/embed/V4djM3mo6gY?rel=0&start=1" 
+                      title="Mockumentary" 
+                      allowfullscreen></iframe>
+              <!-- Or Google Drive link:
+              <iframe src="https://drive.google.com/file/d/FILE_ID/preview" allow="autoplay"></iframe>
+              -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal Template -->
+<div class="modal fade" id="editModal9" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content bg-dark text-white rounded-4">
+      <div class="modal-body">
+        <div class="row g-4">
+          <!-- Left text section -->
+          <div class="col-md-6">
+            <h2>Cover Music Video "ใจลอย"</h2>
+            <h5>INNOCENT</h5>
+            <p><strong>Job Duty: </strong>Director, Editor, Camera</p>
+            <p>
+              โคฟเวอร์มิวสิกวีดีโอเพลง ใจลอย ด้วยความยาวหนึ่งนาที
+              <br><br>ถ่ายทำด้วยกล้อง iPhone 14 เป็นส่วนหนึ่งของวิชาการผลิตรายการบนสื่อออนไลน์ด้วยสมาร์ทโฟน<br>
+            </p>
+          </div>
+          <!-- Right video section -->
+          <div class="col-md-6 d-flex justify-content-center align-items-center">
+            <div class="ratio ratio-16x9 w-100">
+              <!-- YouTube embed -->
+              <iframe src="https://www.youtube.com/embed/7AmrHLkuZt0?rel=0&start=1" 
+                      title="MV" 
+                      allowfullscreen></iframe>
+              <!-- Or Google Drive link:
+              <iframe src="https://drive.google.com/file/d/FILE_ID/preview" allow="autoplay"></iframe>
+              -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal Template -->
+<div class="modal fade" id="editModal10" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content bg-dark text-white rounded-4">
+      <div class="modal-body">
+        <div class="row g-4">
+          <!-- Left text section -->
+          <div class="col-md-6">
+            <h2>เกมโชว์ "ชาร้อนคอแห้ง"</h2>
+            <h5>INNOCENT</h5>
+            <p><strong>Job Duty: </strong>Editor, Voice Over</p>
+            <p>
+              รายการเกมโชว์ "ชาร้อนคอแห้ง" ที่เป็นการนำเกมทางคำชาเย็นมาเพิ่มบทลงโทษด้วยการบีบมะนาวใส่ปาก
+              <br><br>ถ่ายทำด้วยกล้อง Canon E200D และ iPhone 14 Pro เป็นส่วนหนึ่งของวิชาการออกแบบและสร้างสรรค์รายการบนสื่อออนไลน์<br>
+            </p>
+          </div>
+          <!-- Right video section -->
+          <div class="col-md-6 d-flex justify-content-center align-items-center">
+            <div class="ratio ratio-16x9 w-100">
+              <!-- YouTube embed -->
+              <iframe src="https://www.youtube.com/embed/TXS48sPrgfg?rel=0&start=1" 
+                      title="MV" 
+                      allowfullscreen></iframe>
+              <!-- Or Google Drive link:
+              <iframe src="https://drive.google.com/file/d/FILE_ID/preview" allow="autoplay"></iframe>
+              -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal Template -->
+<div class="modal fade" id="editModal11" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content bg-dark text-white rounded-4">
+      <div class="modal-body">
+        <div class="row g-4">
+          <!-- Left text section -->
+          <div class="col-md-6">
+            <h2>Meme Music Video "Hu Tao - Say So"</h2>
+            <h5>Aphirak Thaew-in</h5>
+            <p><strong>Job Duty: </strong>Editor, Animation Rendering</p>
+            <p>
+              Music Video ทำเอาฮา โดยตั้งใจทำให้คล้าย MV ประเภทนี้แต่คุณภาพต่ำกว่า และนำตัวละครมาเต้นท่ามีมแทน
+              <br><br>Render โมเดล 3D ด้วยโปรแกรม Unity และนำมาตัดต่อใน Editor ภายหลัง<br>
+            </p>
+          </div>
+          <!-- Right video section -->
+          <div class="col-md-6 d-flex justify-content-center align-items-center">
+            <div class="ratio ratio-16x9 w-100">
+              <!-- YouTube embed -->
+              <iframe src="https://www.youtube.com/embed/wTWW9p9VmI0?rel=0&start=1" 
+                      title="MV" 
+                      allowfullscreen></iframe>
+              <!-- Or Google Drive link:
+              <iframe src="https://drive.google.com/file/d/FILE_ID/preview" allow="autoplay"></iframe>
+              -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="adModal1" tabindex="-1" aria-labelledby="adModal1" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content bg-dark">
+      <div class="modal-header border-0 flex-column align-items-start">
+        <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h5 class="modal-title text-white mb-1" id="adModal1">โออิชิ กรีนที อรอ่ยสดชื่นแบบเป็นธรรมชาติ</h5>
+        <p class="text-white mb-0">
+          รูปภาพสำหรับ Facebook Ad ของโออิชิ กรีนที ถ่ายทำด้วยกล้อง Canon E200D
+        </p>
+      </div>
+      <div class="modal-body">
+        <div class="row g-3">
+          <!-- Gallery Images -->
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Honey.png" data-lightbox="adGallery" data-title="โออิชิ กรีนที">
+              <img src="images/Art/Honey.png" class="img-fluid rounded shadow-sm" alt="โออิชิ กรีนที">
+            </a>
+          </div>
+          <!-- Add more images here -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="adModal2" tabindex="-1" aria-labelledby="adModal2" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content bg-dark">
+      <div class="modal-header border-0 flex-column align-items-start">
+        <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h5 class="modal-title text-white mb-1" id="adModal2">โออิชิ กรีนที x One Piece</h5>
+        <p class="text-white mb-0">
+          Facebook Ads ในรูปแบบ Album cover (1+3) ของโออิชิ กรีนที x One Piece และรูปแบบสำหรับลง IG ทั้งหมดถ่ายทำด้วยกล้อง Canon E200D
+        </p>
+      </div>
+      <div class="modal-body">
+        <div class="row g-3">
+          <!-- Gallery Images -->
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Oishii/1.png" data-lightbox="adGallery" data-title="โออิชิ กรีนที">
+              <img src="images/Art/Oishii/1.png" class="img-fluid rounded shadow-sm" alt="โออิชิ กรีนที">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Oishii/1.png" data-lightbox="adGallery" data-title="โออิชิ กรีนที">
+              <img src="images/Art/Oishii/2.png" class="img-fluid rounded shadow-sm" alt="โออิชิ กรีนที">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Oishii/1.png" data-lightbox="adGallery" data-title="โออิชิ กรีนที">
+              <img src="images/Art/Oishii/3.png" class="img-fluid rounded shadow-sm" alt="โออิชิ กรีนที">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Oishii/1.png" data-lightbox="adGallery" data-title="โออิชิ กรีนที">
+              <img src="images/Art/Oishii/4.png" class="img-fluid rounded shadow-sm" alt="โออิชิ กรีนที">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Oishii/1.png" data-lightbox="adGallery" data-title="โออิชิ กรีนที">
+              <img src="images/Art/Oishii/5.png" class="img-fluid rounded shadow-sm" alt="โออิชิ กรีนที">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Oishii/ig1.png" data-lightbox="adGallery" data-title="โออิชิ กรีนที">
+              <img src="images/Art/Oishii/ig1.png" class="img-fluid rounded shadow-sm" alt="โออิชิ กรีนที">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Oishii/1.png" data-lightbox="adGallery" data-title="โออิชิ กรีนที">
+              <img src="images/Art/Oishii/ig2.png" class="img-fluid rounded shadow-sm" alt="โออิชิ กรีนที">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Oishii/1.png" data-lightbox="adGallery" data-title="โออิชิ กรีนที">
+              <img src="images/Art/Oishii/ig3.png" class="img-fluid rounded shadow-sm" alt="โออิชิ กรีนที">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Oishii/1.png" data-lightbox="adGallery" data-title="โออิชิ กรีนที">
+              <img src="images/Art/Oishii/ig4.png" class="img-fluid rounded shadow-sm" alt="โออิชิ กรีนที">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Oishii/1.png" data-lightbox="adGallery" data-title="โออิชิ กรีนที">
+              <img src="images/Art/Oishii/ig5.png" class="img-fluid rounded shadow-sm" alt="โออิชิ กรีนที">
+            </a>
+          </div>
+          <!-- Add more images here -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="adModal3" tabindex="-1" aria-labelledby="adModal3" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content bg-dark">
+      <div class="modal-header border-0 flex-column align-items-start">
+        <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h5 class="modal-title text-white mb-1" id="adModal3">ฟาร์มสุข Product Photography</h5>
+        <p class="text-white mb-0">
+          รูปถ่ายสำหรับใช้เพื่อทำการโฆษณา ฟาร์มสุข ไก่ย่างสูตรนมสดสำเร็จรูป ถ่ายทำในสตูดิโอที่มหาวิทยาลัยศรีปทุม
+        </p>
+      </div>
+      <div class="modal-body">
+        <div class="row g-3">
+          <!-- Gallery Images -->
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Farmsuk/1.JPG" data-lightbox="adGallery" data-title="ฟาร์มสุข">
+              <img src="images/Art/Farmsuk/1.JPG" class="img-fluid rounded shadow-sm" alt="ฟาร์มสุข">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Farmsuk/2.JPG" data-lightbox="adGallery" data-title="ฟาร์มสุข">
+              <img src="images/Art/Farmsuk/2.JPG" class="img-fluid rounded shadow-sm" alt="ฟาร์มสุข">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Farmsuk/3.JPG" data-lightbox="adGallery" data-title="ฟาร์มสุข">
+              <img src="images/Art/Farmsuk/3.JPG" class="img-fluid rounded shadow-sm" alt="ฟาร์มสุข">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Farmsuk/4.JPG" data-lightbox="adGallery" data-title="ฟาร์มสุข">
+              <img src="images/Art/Farmsuk/4.JPG" class="img-fluid rounded shadow-sm" alt="ฟาร์มสุข">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Farmsuk/5.JPG" data-lightbox="adGallery" data-title="ฟาร์มสุข">
+              <img src="images/Art/Farmsuk/5.JPG" class="img-fluid rounded shadow-sm" alt="ฟาร์มสุข">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Farmsuk/6.JPG" data-lightbox="adGallery" data-title="ฟาร์มสุข">
+              <img src="images/Art/Farmsuk/6.JPG" class="img-fluid rounded shadow-sm" alt="ฟาร์มสุข">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Farmsuk/7.JPG" data-lightbox="adGallery" data-title="ฟาร์มสุข">
+              <img src="images/Art/Farmsuk/7.JPG" class="img-fluid rounded shadow-sm" alt="ฟาร์มสุข">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Farmsuk/8.JPG" data-lightbox="adGallery" data-title="ฟาร์มสุข">
+              <img src="images/Art/Farmsuk/8.JPG" class="img-fluid rounded shadow-sm" alt="ฟาร์มสุข">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Farmsuk/9.JPG" data-lightbox="adGallery" data-title="ฟาร์มสุข">
+              <img src="images/Art/Farmsuk/9.JPG" class="img-fluid rounded shadow-sm" alt="ฟาร์มสุข">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Farmsuk/10.JPG" data-lightbox="adGallery" data-title="ฟาร์มสุข">
+              <img src="images/Art/Farmsuk/10.JPG" class="img-fluid rounded shadow-sm" alt="ฟาร์มสุข">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Farmsuk/11.JPG" data-lightbox="adGallery" data-title="ฟาร์มสุข">
+              <img src="images/Art/Farmsuk/11.JPG" class="img-fluid rounded shadow-sm" alt="ฟาร์มสุข">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Farmsuk/12.JPG" data-lightbox="adGallery" data-title="ฟาร์มสุข">
+              <img src="images/Art/Farmsuk/12.JPG" class="img-fluid rounded shadow-sm" alt="ฟาร์มสุข">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Farmsuk/13.JPG" data-lightbox="adGallery" data-title="ฟาร์มสุข">
+              <img src="images/Art/Farmsuk/13.JPG" class="img-fluid rounded shadow-sm" alt="ฟาร์มสุข">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Farmsuk/14.JPG" data-lightbox="adGallery" data-title="ฟาร์มสุข">
+              <img src="images/Art/Farmsuk/14.JPG" class="img-fluid rounded shadow-sm" alt="ฟาร์มสุข">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Farmsuk/15.JPG" data-lightbox="adGallery" data-title="ฟาร์มสุข">
+              <img src="images/Art/Farmsuk/15.JPG" class="img-fluid rounded shadow-sm" alt="ฟาร์มสุข">
+            </a>
+          </div>
+          <!-- Add more images here -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="digitalModal1" tabindex="-1" aria-labelledby="digitalModal1" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content bg-dark">
+      <div class="modal-header border-0 flex-column align-items-start">
+        <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h5 class="modal-title text-white mb-1" id="digitalModal1">"Tardiness Girl" Game Illustration</h5>
+        <p class="text-white mb-0">
+          ภาพวาดประกอบวีดีโอเกม "Tardiness Girl" ในรูปแบบ Pixel Art ประกอบด้วยภาพ Portraits และ Sprite (มีการใช้ A.I ในการ Refine ภาพนิดหน่อย แต่ยังวาดเองเป็นหลัก)
+        </p>
+      </div>
+      <div class="modal-body">
+        <div class="row g-3">
+          <!-- Gallery Images -->
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Tardiness/1.png" data-lightbox="adGallery" data-title="Tardiness">
+              <img src="images/Art/Tardiness/1.png" class="img-fluid rounded shadow-sm" alt="Tardiness">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Tardiness/1.png" data-lightbox="adGallery" data-title="Tardiness">
+              <img src="images/Art/Tardiness/2.png" class="img-fluid rounded shadow-sm" alt="Tardiness">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Tardiness/1.png" data-lightbox="adGallery" data-title="Tardiness">
+              <img src="images/Art/Tardiness/3.png" class="img-fluid rounded shadow-sm" alt="Tardiness">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Tardiness/1.png" data-lightbox="adGallery" data-title="Tardiness">
+              <img src="images/Art/Tardiness/4.png" class="img-fluid rounded shadow-sm" alt="Tardiness">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Tardiness/1.png" data-lightbox="adGallery" data-title="Tardiness">
+              <img src="images/Art/Tardiness/5.png" class="img-fluid rounded shadow-sm" alt="Tardiness">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Tardiness/1.png" data-lightbox="adGallery" data-title="Tardiness">
+              <img src="images/Art/Tardiness/6.png" class="img-fluid rounded shadow-sm" alt="Tardiness">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Tardiness/1.png" data-lightbox="adGallery" data-title="Tardiness">
+              <img src="images/Art/Tardiness/7.png" class="img-fluid rounded shadow-sm" alt="Tardiness">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Tardiness/1.png" data-lightbox="adGallery" data-title="Tardiness">
+              <img src="images/Art/Tardiness/8.png" class="img-fluid rounded shadow-sm" alt="Tardiness">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Tardiness/1.png" data-lightbox="adGallery" data-title="Tardiness">
+              <img src="images/Art/Tardiness/9.png" class="img-fluid rounded shadow-sm" alt="Tardiness">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Tardiness/1.png" data-lightbox="adGallery" data-title="Tardiness">
+              <img src="images/Art/Tardiness/10.png" class="img-fluid rounded shadow-sm" alt="Tardiness">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Tardiness/1.png" data-lightbox="adGallery" data-title="Tardiness">
+              <img src="images/Art/Tardiness/11.png" class="img-fluid rounded shadow-sm" alt="Tardiness">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Tardiness/1.png" data-lightbox="adGallery" data-title="Tardiness">
+              <img src="images/Art/Tardiness/12.png" class="img-fluid rounded shadow-sm" alt="Tardiness">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Tardiness/1.png" data-lightbox="adGallery" data-title="Tardiness">
+              <img src="images/Art/Tardiness/13.png" class="img-fluid rounded shadow-sm" alt="Tardiness">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Tardiness/1.png" data-lightbox="adGallery" data-title="Tardiness">
+              <img src="images/Art/Tardiness/14.png" class="img-fluid rounded shadow-sm" alt="Tardiness">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Tardiness/1.png" data-lightbox="adGallery" data-title="Tardiness">
+              <img src="images/Art/Tardiness/15.png" class="img-fluid rounded shadow-sm" alt="Tardiness">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Tardiness/1.png" data-lightbox="adGallery" data-title="Tardiness">
+              <img src="images/Art/Tardiness/16.png" class="img-fluid rounded shadow-sm" alt="Tardiness">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Tardiness/1.png" data-lightbox="adGallery" data-title="Tardiness">
+              <img src="images/Art/Tardiness/17.png" class="img-fluid rounded shadow-sm" alt="Tardiness">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Tardiness/1.png" data-lightbox="adGallery" data-title="Tardiness">
+              <img src="images/Art/Tardiness/18.png" class="img-fluid rounded shadow-sm" alt="Tardiness">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Tardiness/1.png" data-lightbox="adGallery" data-title="Tardiness">
+              <img src="images/Art/Tardiness/19.png" class="img-fluid rounded shadow-sm" alt="Tardiness">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Tardiness/1.png" data-lightbox="adGallery" data-title="Tardiness">
+              <img src="images/Art/Tardiness/20.png" class="img-fluid rounded shadow-sm" alt="Tardiness">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Tardiness/1.png" data-lightbox="adGallery" data-title="Tardiness">
+              <img src="images/Art/Tardiness/21.png" class="img-fluid rounded shadow-sm" alt="Tardiness">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Tardiness/1.png" data-lightbox="adGallery" data-title="Tardiness">
+              <img src="images/Art/Tardiness/22.png" class="img-fluid rounded shadow-sm" alt="Tardiness">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Tardiness/1.png" data-lightbox="adGallery" data-title="Tardiness">
+              <img src="images/Art/Tardiness/23.png" class="img-fluid rounded shadow-sm" alt="Tardiness">
+            </a>
+          </div>
+          <!-- Add more images here -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="digitalModal3" tabindex="-1" aria-labelledby="digitalModal3" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content bg-dark">
+      <div class="modal-header border-0 flex-column align-items-start">
+        <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h5 class="modal-title text-white mb-1" id="digitalModal3">Katta Dance Animation</h5>
+        <p class="text-white mb-0">
+          อนิเมชั่นอวตารของช่อง Katta ทำท่าเต้น เพื่อนำไปใช้เป็นหน้าจอรอไลฟ์สตรีมและ End Card
+        </p>
+      </div>
+      <div class="modal-body">
+        <div class="row g-3">
+          <!-- Gallery Images -->
+          <div class="col-6 col-md-4">
+            <a href="images/Art/dance.gif" data-lightbox="adGallery" data-title="Katta">
+              <img src="images/Art/dance.gif" class="img-fluid rounded shadow-sm" alt="Katta">
+            </a>
+          </div>
+          <!-- Add more images here -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="digitalModal2" tabindex="-1" aria-labelledby="digitalModal2" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content bg-dark">
+      <div class="modal-header border-0 flex-column align-items-start">
+        <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h5 class="modal-title text-white mb-1" id="digitalModal2">Fan Art Gawr Gura "King"</h5>
+        <p class="text-white mb-0">
+          รูปภาพ Fanart ของ Vtuber Gawr Gura เป็น Fanart รูปแรกที่ตั้งใจทำแม้อาจจะไม่ได้ดีมาก แต่ก็เป็นก้าวแรกในหลาย ๆ อย่างต่อจากนี้ครับ :) 
+        </p>
+      </div>
+      <div class="modal-body">
+        <div class="row g-3">
+          <!-- Gallery Images -->
+          <div class="col-6 col-md-4">
+            <a href="images/Art/King Gura.png" data-lightbox="adGallery" data-title="Tardiness">
+              <img src="images/Art/King Gura.png" class="img-fluid rounded shadow-sm" alt="Tardiness">
+            </a>
+          </div>
+          <!-- Add more images here -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="etcModal1" tabindex="-1" aria-labelledby="etcModal1" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content bg-dark">
+      <div class="modal-header border-0 flex-column align-items-start">
+        <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h5 class="modal-title text-white mb-1" id="etcModal1">Board Game Co-Illustration/Design "Galactic Scallywags"</h5>
+        <p class="text-white mb-0">
+          ร่วมออกแบบเกมและวาดภาพประกอบ (ดาวเคราะห์) ร่วมกับนักวาด <a href="https://x.com/soulsyo2020/">Soulyo</a> ในนาม SwordFish เพื่อทำบอร์ดเกม "Galactic Scallywags" ซึ่งถูกนำไปจัดแสดงและเปิดให้ทดลองเล่นในงานบอร์ดเกมของมหาวิทยาลัยศรีปทุม (ภาพที่นำมาแสดงนี้ เป็นพาร์ทที่ผมเป็นคนทำเท่านั้น)
+        </p>
+      </div>
+      <div class="modal-body">
+        <div class="row g-3">
+          <!-- Gallery Images -->
+          <div class="col-6 col-md-4">
+            <a href="images/Art/BoardGame/1.png" data-lightbox="adGallery" data-title="BoardGame">
+              <img src="images/Art/BoardGame/1.png" class="img-fluid rounded shadow-sm" alt="BoardGame">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/BoardGame/1.png" data-lightbox="adGallery" data-title="BoardGame">
+              <img src="images/Art/BoardGame/2.png" class="img-fluid rounded shadow-sm" alt="BoardGame">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/BoardGame/1.png" data-lightbox="adGallery" data-title="BoardGame">
+              <img src="images/Art/BoardGame/3.png" class="img-fluid rounded shadow-sm" alt="BoardGame">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/BoardGame/1.png" data-lightbox="adGallery" data-title="BoardGame">
+              <img src="images/Art/BoardGame/4.png" class="img-fluid rounded shadow-sm" alt="BoardGame">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/BoardGame/1.png" data-lightbox="adGallery" data-title="BoardGame">
+              <img src="images/Art/BoardGame/5.png" class="img-fluid rounded shadow-sm" alt="BoardGame">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/BoardGame/1.png" data-lightbox="adGallery" data-title="BoardGame">
+              <img src="images/Art/BoardGame/6.png" class="img-fluid rounded shadow-sm" alt="BoardGame">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/BoardGame/1.png" data-lightbox="adGallery" data-title="BoardGame">
+              <img src="images/Art/BoardGame/7.png" class="img-fluid rounded shadow-sm" alt="BoardGame">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/BoardGame/1.png" data-lightbox="adGallery" data-title="BoardGame">
+              <img src="images/Art/BoardGame/8.png" class="img-fluid rounded shadow-sm" alt="BoardGame">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/BoardGame/1.png" data-lightbox="adGallery" data-title="BoardGame">
+              <img src="images/Art/BoardGame/9.png" class="img-fluid rounded shadow-sm" alt="BoardGame">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/BoardGame/1.png" data-lightbox="adGallery" data-title="BoardGame">
+              <img src="images/Art/BoardGame/10.png" class="img-fluid rounded shadow-sm" alt="BoardGame">
+            </a>
+          </div>
+          <!-- Add more images here -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="etcModal2" tabindex="-1" aria-labelledby="etcModal2" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content bg-dark">
+      <div class="modal-header border-0 flex-column align-items-start">
+        <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h5 class="modal-title text-white mb-1" id="etcModal2">KamiAmagumoSub Page Logo/Artwork</h5>
+        <p class="text-white mb-0">
+          ทำหน้าที่เป็นนักแปลและออกแบบโลโก้ให้กับเพจ <a href="https://web.facebook.com/KamiThe3rd">KamiThe3rd</a> (เดิม KamiAmagumoSub) โดยตั้งใจทำให้โลโก้มีความคล้ายคลึงกับต้นฉบับของอนิเมะเรื่องนั้น ๆ
+        </p>
+      </div>
+      <div class="modal-body">
+        <div class="row g-3">
+          <!-- Gallery Images -->
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Kami/1.png" data-lightbox="adGallery" data-title="Kami">
+              <img src="images/Art/Kami/1.png" class="img-fluid rounded shadow-sm" alt="Kami">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Kami/1.png" data-lightbox="adGallery" data-title="Kami">
+              <img src="images/Art/Kami/2.png" class="img-fluid rounded shadow-sm" alt="Kami">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Kami/1.png" data-lightbox="adGallery" data-title="Kami">
+              <img src="images/Art/Kami/3.png" class="img-fluid rounded shadow-sm" alt="Kami">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Kami/1.png" data-lightbox="adGallery" data-title="Kami">
+              <img src="images/Art/Kami/4.png" class="img-fluid rounded shadow-sm" alt="Kami">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Kami/1.png" data-lightbox="adGallery" data-title="Kami">
+              <img src="images/Art/Kami/5.jpg" class="img-fluid rounded shadow-sm" alt="Kami">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Kami/1.png" data-lightbox="adGallery" data-title="Kami">
+              <img src="images/Art/Kami/6.png" class="img-fluid rounded shadow-sm" alt="Kami">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Kami/1.png" data-lightbox="adGallery" data-title="Kami">
+              <img src="images/Art/Kami/7.png" class="img-fluid rounded shadow-sm" alt="Kami">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Kami/1.png" data-lightbox="adGallery" data-title="Kami">
+              <img src="images/Art/Kami/8.png" class="img-fluid rounded shadow-sm" alt="Kami">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Kami/1.png" data-lightbox="adGallery" data-title="Kami">
+              <img src="images/Art/Kami/9.png" class="img-fluid rounded shadow-sm" alt="Kami">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Kami/1.png" data-lightbox="adGallery" data-title="Kami">
+              <img src="images/Art/Kami/10.jpg" class="img-fluid rounded shadow-sm" alt="Kami">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Kami/1.png" data-lightbox="adGallery" data-title="Kami">
+              <img src="images/Art/Kami/11.jpg" class="img-fluid rounded shadow-sm" alt="Kami">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Kami/1.png" data-lightbox="adGallery" data-title="Kami">
+              <img src="images/Art/Kami/12.png" class="img-fluid rounded shadow-sm" alt="Kami">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Kami/1.png" data-lightbox="adGallery" data-title="Kami">
+              <img src="images/Art/Kami/13.png" class="img-fluid rounded shadow-sm" alt="Kami">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Kami/1.png" data-lightbox="adGallery" data-title="Kami">
+              <img src="images/Art/Kami/14.png" class="img-fluid rounded shadow-sm" alt="Kami">
+            </a>
+          </div>
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Kami/1.png" data-lightbox="adGallery" data-title="Kami">
+              <img src="images/Art/Kami/15.jpg" class="img-fluid rounded shadow-sm" alt="Kami">
+            </a>
+          </div>
+          <!-- Add more images here -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="animatedModal2" tabindex="-1" aria-labelledby="animatedModal2" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content bg-dark">
+      <div class="modal-header border-0 flex-column align-items-start">
+        <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h5 class="modal-title text-white mb-1" id="animatedModal2">Cinemagraph เลย์ STAX</h5>
+        <p class="text-white mb-0">
+          Cinemagraph หรืออนิเมทภาพเคลื่อนไหว Ads เลย์ STAX
+        </p>
+      </div>
+      <div class="modal-body">
+        <div class="row g-3">
+          <!-- Gallery Images -->
+          <div class="col-6 col-md-4">
+            <a href="images/Art/Cinemagraph.gif" data-lightbox="adGallery" data-title="STAX">
+              <img src="images/Art/Cinemagraph.gif" class="img-fluid rounded shadow-sm" alt="STAX">
+            </a>
+          </div>
+          <!-- Add more images here -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Advertisement Gallery Modal -->
+<div class="modal fade" id="animatedModal1" tabindex="-1" aria-labelledby="animatedModal1" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content bg-dark">
+      <div class="modal-header border-0 flex-column align-items-start">
+        <h5 class="modal-title text-white mb-1" id="animatedModal1">VGI Sky Vibes 2024-2025 Animated Banner/AW and Backdrop Screen</h5>
+        <p class="text-white mb-0">
+          จัดทำภาพอนิเมทสำหรับใช้โปรโมทงาน VGI Sky Vibes โดยการนำ Art Work จากทีมอาร์ต นำมาทำเป็นภาพเคลื่อนไหว โดยงานชิ้นนี้ถูกนำไปใช้จริงทั้งในโซเซียลมีเดียและป้ายสื่อตามสถานีรถไฟฟ้า BTS และยังทำภาพเคลื่อนไหวสำหรับใช้แสดงในจอด้านหลังเวที (หากวีดีโอไม่เล่นให้เปิดเป็นหน้าต่างใหม่เพื่อความรวดเร็ว)
+        </p>
+        <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row g-3">
+          <!-- Gallery Videos -->
+          <div class="col-6 col-md-4">
+            <div class="ratio ratio-16x9">
+              <iframe src="https://drive.google.com/file/d/1NATG4DVeoJJ4L0bK7T7dZ0xtF4Wd8xa6/preview" allowfullscreen></iframe>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-4">
+            <div class="ratio ratio-16x9">
+              <iframe src="https://drive.google.com/file/d/13D1_vKySG9FSQaVZtlFMtABK7OwzBARW/preview" allowfullscreen></iframe>
+            </div>
+          </div>
+          <div class="col-6 col-md-4">
+            <div class="ratio ratio-16x9">
+              <iframe src="https://drive.google.com/file/d/1QTXxCVpap953_rbpeaFzargW9qCiQ-Cd/preview" allowfullscreen></iframe>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-4">
+            <div class="ratio ratio-16x9">
+              <iframe src="https://drive.google.com/file/d/1ggzzlQE0fOKjKZ1Z3bTe4dVIjDJ9XASW/preview" allowfullscreen></iframe>
+            </div>
+          </div>
+          <div class="col-6 col-md-4"> 
+            <div class="ratio ratio-16x9">
+              <iframe src="https://drive.google.com/file/d/1NnSirwZKVrUghA5BacPfFvMXfpPJTD8w/preview" allowfullscreen></iframe>
+            </div>
+          </div>
+          <div class="col-6 col-md-4"> 
+            <div class="ratio ratio-16x9">
+              <iframe src="https://drive.google.com/file/d/1vJrTVcavXx7SGK97kGwhKGSsGixtbzhi/preview" allowfullscreen></iframe>
+            </div>
+          </div>
+
+          <!-- Add more videos here -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    </section>
+    
+  </div> <!-- end content-wrapper -->
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function showPage(pageId, event, addToHistory = true) {
+      document.querySelectorAll('.page-section').forEach(sec => {
+        sec.classList.remove('active');
+        sec.style.opacity = 0;
+      });
+
+      const targetPage = document.getElementById(pageId);
+      targetPage.classList.add('active');
+      setTimeout(() => targetPage.style.opacity = 1, 50);
+
+      document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+      if (event && event.target && event.target.classList.contains("nav-link")) {
+        event.target.classList.add('active');
+      }
+
+      if (addToHistory) {
+        history.pushState({ page: pageId }, "", "#" + pageId);
+      }
+    }
+
+    // Back/forward buttons
+    window.onpopstate = function(event) {
+      if (event.state && event.state.page) {
+        showPage(event.state.page, null, false);
+      } else {
+        showPage('home', null, false);
+      }
+    };
+
+    // Load correct page on refresh
+    window.addEventListener("load", () => {
+      const hash = window.location.hash.replace("#", "");
+      if (hash) {
+        showPage(hash, null, false);
+      } else {
+        showPage("home", null, false);
+      }
+    });
+  </script>
 </body>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="social-links"> <a href="https://twitter.com/a1_nice" target="_blank"><i class="fab fa-twitter"></i></a> <a href="https://web.facebook.com/profile.php?id=100031029731992" target="_blank"><i class="fab fa-facebook"></i></a> <a href="https://www.youtube.com/channel/UCCZW7GDBLRsWPRKqb1YlLgA/" target="_blank"><i class="fab fa-youtube"></i></a> <a href="https://www.twitch.tv/tiskatta" target="_blank"><i class="fab fa-twitch"></i></a> <a href="https://www.pixiv.net/en/users/17350585" target="_blank"><i class="fa-brands fa-pixiv"></i></a> <a href="https://myanimelist.net/animelist/KisekiKatan" target="_blank"> <img src="https://simpleicons.org/icons/myanimelist.svg" alt="MyAnimeList" style="width:32px;height:32px;filter:invert(1);"> </a> </div>
+  </footer>
 </html>
