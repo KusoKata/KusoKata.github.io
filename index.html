@@ -15,8 +15,8 @@
     body {
       font-family: 'Kanit', sans-serif;
       background: linear-gradient(90deg, rgba(203,14,144,1) 0%, rgba(255,87,87,1) 100%);
-      background-size: 400% 400%;
-      animation: gradientBG 15s ease infinite;
+      background-size: 200% 200%;
+      animation: gradientBG 60s ease infinite;
       color: #fff;
       min-height: 100vh;
       display: flex;
@@ -27,6 +27,11 @@
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      body { animation: none !important; background-size: auto !important; }
+      .image-card img, .image-card .overlay { transition: none !important; }
     }
 
     .navbar { margin-top: 20px; }
@@ -212,10 +217,10 @@
 
 
   </style>
+
 </head>
-<!-- Lightbox2 CSS & JS -->
+<!-- Lightbox CSS (keep in head) -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
 
 <body>
   <!-- Navbar -->
@@ -1836,6 +1841,26 @@
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Deferred Lightbox JS to avoid render-blocking -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+  <!-- Lazy-load initializer: adds `loading="lazy"` + decoding to images/iframes -->
+  <script>
+    (function(){
+      try {
+        document.querySelectorAll('img').forEach(function(img){
+          if (!img.hasAttribute('loading')) img.setAttribute('loading','lazy');
+          if (!img.hasAttribute('decoding')) img.decoding = 'async';
+        });
+        document.querySelectorAll('iframe').forEach(function(fr){
+          if (!fr.hasAttribute('loading')) fr.setAttribute('loading','lazy');
+        });
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          document.body.style.animation = 'none';
+          document.documentElement.style.scrollBehavior = 'auto';
+        }
+      } catch (e) { console.warn('lazy-init failed', e); }
+    })();
+  </script>
   <script>
     function showPage(pageId, event, addToHistory = true) {
       document.querySelectorAll('.page-section').forEach(sec => {
