@@ -1,21 +1,24 @@
-[Launcher]
-launcher_ver=0.5.3
-launcher_sub=0.5.3
+[launcher]
+launcher_ver=1.0
+launcher_sub=0.5.2b
+launcher_link=https://drive.usercontent.google.com/download?id=1RQCaRZiWs1CYX9SxQ-0n9kFAYAshxS1x
 
 [item1]
 ea=false
 file=ep_kana
 name=Arima Kana
+game_ver=0.5.3
 ver=1
 imgurl=https://raw.githubusercontent.com/KusoKata/KusoKata.github.io/refs/heads/main/WYWEImage/Kana_N.png
 size=126.85 MB
 link1=https://drive.usercontent.google.com/download?id=1hOH9OB4YYm9pKlBARtcSSUy4aVzdoRNA&export=download
-link2=
+link2=https://www.mediafire.com/file/y83q2fqnkpjsppv/ep_kana/file
 
 [item2]
 ea=false
 file=ep_takina
 name=Takina Inoue
+game_ver=0.5.3
 ver=1
 imgurl=https://raw.githubusercontent.com/KusoKata/KusoKata.github.io/refs/heads/main/WYWEImage/Takina_N.png
 size=314.37 MB
@@ -26,6 +29,7 @@ link2=https://www.mediafire.com/file/z485p5t752tkm4p/ep_takina/file
 ea=false
 file=ep_fern
 name=Fern
+game_ver=0.5.3
 ver=1
 imgurl=https://raw.githubusercontent.com/KusoKata/KusoKata.github.io/refs/heads/main/WYWEImage/Fern_N.png
 size=518.05 MB
@@ -36,6 +40,7 @@ link2=https://www.mediafire.com/file/las4080eizh4gab/ep_fern/file
 ea=false
 file=ep_marin
 name=Kitagawa Marin
+game_ver=0.5.3
 ver=1
 imgurl=https://raw.githubusercontent.com/KusoKata/KusoKata.github.io/refs/heads/main/WYWEImage/Marin_N.png
 size=465.53 MB
@@ -46,6 +51,7 @@ link2=https://www.mediafire.com/file/g3uu7z43is5pldq/ep_marin/file
 ea=false
 file=ep_llenn
 name=Kohiruimaki "LLENN" Karen
+game_ver=0.5.3
 ver=1
 imgurl=https://raw.githubusercontent.com/KusoKata/KusoKata.github.io/refs/heads/main/WYWEImage/Llenn_N.png
 size=641.32 MB
@@ -53,10 +59,12 @@ link1=https://drive.usercontent.google.com/download?id=1NY3dpEOKybnb_T_8jiCRwXYe
 link2=https://www.mediafire.com/file/3y7bybye6kk8cm6/ep_llenn/file
 
 #[item6]
-#ea=true
-#file=ep_kigurumi
-#name=(Early Access) Special Episode: Kigurumi
+#ea=false
+#file=ep_llenn
+#name=!!Test Item!! ignore This
+#game_ver=0.5.4
 #ver=1
-#imgurl=https://raw.githubusercontent.com/KusoKata/KusoKata.github.io/refs/heads/main/WYWEImage/Llenn_N.png
-#size=296.49 MB
-#link=https://www.patreon.com/c/studiokata
+#imgurl=
+#size=641.32 MB
+#link1=https://drive.usercontent.google.com/download?id=1NY3dpEOKybnb_T_8jiCRwXYe_ChSIDcX&export=download
+#link2=https://www.mediafire.com/file/3y7bybye6kk8cm6/ep_llenn/file
